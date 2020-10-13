@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  #add custom routes on top here as needed
+  get'/signup' => 'users#new'
+  post '/signup' => 'users#create'
   resources :behavior_logs
   resources :users
   resources :kids

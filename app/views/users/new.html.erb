@@ -1,0 +1,14 @@
+<h1>Sign Up</h1>
+
+<%= form_for(@user, url:'/signup') do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username, required:true%>
+    <br>
+    <%= f.label :email %>
+    <%= f.email_field :email, required:true %>
+    <br>
+    <%= f.label :password %>
+    <%= f.password_field :password, required:true %> <!--we use password instead of password_digest here b/c if we send in password_digest= it will end up storing the rosster in it and we bypass 'bcrypt'. Only in the database that we reference this as password_digest -->
+    <br>
+    <%= f.submit "Submit"%>
+<% end %>
