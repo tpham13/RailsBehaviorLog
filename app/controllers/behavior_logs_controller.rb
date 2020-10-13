@@ -1,0 +1,2 @@
+class BehaviorLogsController < ApplicationController
+end
