@@ -10,11 +10,11 @@ class BehaviorLogsController < ApplicationController
     end 
 
     def create
-        @behavior_log = current_user.kids.behavior_logs.new(behavior_log_params)
-        byebug
+        @behavior_log = current_user.behavior_logs.new(behavior_log_params)
+        # byebug
         if @behavior_log.save
             
-            redirect_to behavior_logs_path
+            redirect_to behavior_log_path
         else
             render :new 
         end 
