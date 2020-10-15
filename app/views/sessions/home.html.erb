@@ -1,4 +1,8 @@
 <h1>Welcome to the Behavioral Log Tracker</h1>
  <p>Are you a parent/ an educator who see your kids struggle with tantrums more than once a week or sometimes multiple times a day? As parent/educator, sometimes the struggle is not knowing what cause the tantrum/challenging behaviors so that you can be proactive in preventing the behaviors. This behavioral log will track the details of of the incidents. This information is important to know why a child might behave a certain way. </p>
    
-<%= link_to 'Signup for an Account', '/signup', method: 'get'%>
+<%= button_to 'Signup for an Account', '/signup', method: 'get'%> 
+<!--<%= link_to 'Signup for an Account', signup_path %>--> <!-- using button_to did not work for this code that's using helpers but link_to works -->
+<br>
+<%= button_to 'Login', '/login', method: 'get'%>
+<!--<%= link_to 'Login', login_path %>-->

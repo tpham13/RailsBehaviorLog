@@ -1,6 +1,6 @@
-<h1>Welcome <%= @user.username %></h1>
-
-<%= form_tag("/logout", method:'delete') do %>
-    <%= submit_tag "Logout" %>
+<h2><%= @user.username %> </h2> has these following kids:<br/>
+ 
+<% @user.kids.each do |kid| %>
+  <%= link_to kid.name, kid_path(kid) %>
 <% end %>
 

@@ -1,0 +1,20 @@
+<h2><%= @kid.name %></h2>
+<p>
+  Birthday: <%= @kid.birthday %>
+</p>
+<p>
+Belong to these caregivers:<br><br>
+  <% @kid.behavior_logs.each do |log| %>
+    <%= link_to log.user.username, user_path(log.user) %> <br>
+     
+  <% end %> <br><br>
+Has these recorded logs:<br><br>
+    <% @kid.behavior_logs.each do |log|%>
+    Date:    <%= log.date%><br/>
+    Time:    <%= log.time%><br/>
+    Location:<%= log.location%><br/>
+    Before behavior happen: <%= log.before_behavior%><br/>
+    Behavior description:   <%= log.behavior_content%><br/>
+    Behavior outcome:       <%= log.outcome%><br/>
+    <% end %>
+ </p> 

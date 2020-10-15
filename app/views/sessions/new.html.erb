@@ -1,0 +1,15 @@
+
+<h1>Login</h1>
+<%= flash[:message] if flash[:message] %>
+<!--we use a form_tag instead of form_for here b/c we're not creating a user, so we don't need a form_for.
+If we want to use form_for, we can send in a model (:user) or instance variable (@uer)-->
+
+<%= form_for :user do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username, required:true%>
+    <br>
+    <%= f.label :password %>
+    <%= f.password_field :password, required:true %> <!--we use password instead of password_digest here b/c if we send in password_digest= it will end up storing the rosster in it and we bypass 'bcrypt'. Only in the database that we reference this as password_digest -->
+    <br>
+    <%= f.submit "Submit"%>
+<% end %>
