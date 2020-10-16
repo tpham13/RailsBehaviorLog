@@ -16,7 +16,7 @@ class KidsController < ApplicationController
         # byebug
         @kid = Kid.new(kid_params)
         if @kid.save
-            redirect_to @kids
+            redirect_to @kid
         else
             render :new
         end 

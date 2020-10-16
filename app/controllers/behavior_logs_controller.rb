@@ -10,20 +10,21 @@ class BehaviorLogsController < ApplicationController
     end 
 
     def create
-        @behavior_log = current_user.behavior_logs.new(behavior_log_params)
+        #  byebug
+        @behavior_log = @kid.behavior_logs.build(behavior_log_params)
         # byebug
         if @behavior_log.save
             
             redirect_to behavior_log_path
         else
-            render :new 
+            render :new  
         end 
     end 
 
     private
 
         def behavior_log_params
-            params.require(:behavior_log).permit(:date, :time, :location, :before_behavior, :behavior_content, :outcome)
+            params.require(:behavior_log).permit(:date, :time, :location, :before_behavior, :behavior_content, :outcome, :user_id)
         end 
 
 

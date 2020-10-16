@@ -1,1 +1,9 @@
 <h1>behavior show page</h1>
+<% @behavior_logs.each do |log|%>
+    Date:    <%= log.date%><br/>
+    Time:    <%= log.time%><br/>
+    Location:<%= log.location%><br/>
+    Before behavior happen: <%= log.before_behavior%><br/>
+    Behavior description:   <%= log.behavior_content%><br/>
+    Behavior outcome:       <%= log.outcome%><br/>
+    <% end %>
