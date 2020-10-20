@@ -1,7 +1,7 @@
 <h1>Kid(s) You're Responsible For :) </h1>
 
 <ol>
-<% @kids.each do |kid| %>
+<% current_user.kids.uniq.each do |kid| %>
     <li>
     <%= link_to kid.name, kid_path(kid) %> - 
     <%= link_to "See behavior logs", kid_behavior_logs_path(kid) %>

@@ -1,45 +1,12 @@
-<!--<h1>New Behavior Log</h1>
-<%= form_for(@behavior_log) do |f|%>
-    <%= f.label :date %>
-    <%= f.date_field :date %>
 
-    <%= f.label :time %>
-    <%= f.time_field :time%>
-    <br>
-    <br> 
-
-    <%= f.label :location %>
-    <%= f.text_field :location%>
-    <br>
-    <br> 
-
-    <%= f.label :before_behavior %>
-    <%= f.text_field :before_behavior%>
-    <br>
-    <br> 
-
-    <%= f.label :behavior_content %>
-    <%= f.text_area :behavior_content%>
-    <br>
-    <br>    
-    <%= f.label :outcome %>
-    <%= f.text_field :outcome%>
-    <br>
-    <br> 
-    <%= f.collection_select :user, User.all, :id, :username %>
-    <%= f.collection_select :kid, Kid.all, :id, :name %>
-    <%= f.submit "Add Behavior Log"%>
-<% end %>-->
-<h1>New Behavior Log</h1>
+ <h1>New Behavior Log</h1>
 <%= form_for ([@behavior_log.kid, @behavior_log]) do |f| %>
-<%= f.collection_select :kid_id, current_user.kids, :id, :name %>
+<%= f.collection_select :kid_id, current_user.kids.uniq, :id, :name %>
   
-  <%= f.hidden_field :user_id%>
-  <!--<p>
-    <%= f.collection_select :user_id, User.all, :id, :username %>
-  </p>-->
-  
-  <p>
+  <%= f.hidden_field :user_id%> 
+
+
+
     <%= f.label :date %>
     <%= f.date_field :date %>
 
@@ -66,9 +33,6 @@
     <%= f.text_field :outcome%>
     <br>
     <br> 
-  
 
-  </p>
-  <br/>
   <%= f.submit "Add Behavior Log"%>
 <% end %>

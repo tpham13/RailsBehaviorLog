@@ -10,13 +10,7 @@
   <% end %> <br><br>-->
 Has these recorded logs:<br><br>
     <% @kid.behavior_logs.each do |log|%><br>
-    Date:    <%= log.date%><br/>
-    Time:    <%= log.time%><br/>
-    Location:<%= log.location%><br/>
-    Before behavior happen: <%= log.before_behavior%><br/>
-    Behavior description:   <%= log.behavior_content%><br/>
-    Behavior outcome:       <%= log.outcome%><br/>
-    Recorded by: <%=log.user.username%><br/>
-    -----------------------------------------------------
+    Incident date:    <%= link_to log.date, behavior_logs_path(@behavior_logs) %><br/>
+   
     <% end %>
  </p> 

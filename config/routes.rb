@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   resources :kids do 
     resources :behavior_logs
   end
-  resources :users, only: [:create, :new, :show] 
+  resources :users, only: [:create, :new, :show] do 
+    resources :behavior_logs
+  end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
