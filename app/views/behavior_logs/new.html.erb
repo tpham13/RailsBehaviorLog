@@ -32,7 +32,7 @@
 <% end %>-->
 <h1>New Behavior Log</h1>
 <%= form_for ([@behavior_log.kid, @behavior_log]) do |f| %>
-<%= f.collection_select :kid, current_user.kids, :id, :name %>
+<%= f.collection_select :kid_id, current_user.kids, :id, :name %>
   
   <%= f.hidden_field :user_id%>
   <!--<p>

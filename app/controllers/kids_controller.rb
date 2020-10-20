@@ -1,26 +1,26 @@
 class KidsController < ApplicationController
 
-    def index
-        @kids = current_user.kids.all
-    end 
-
-    def show
-        @kid = Kid.find(params[:id])
-    end 
     
     def new
         @kid = Kid.new
     end 
 
     def create
-        # byebug
         @kid = Kid.new(kid_params)
         if @kid.save
-            redirect_to @kid
+            redirect_to kids_path(@kids)
         else
-            render :new
+            render 'kids/new'
         end 
         
+    end 
+
+    def index
+        @kids = current_user.kids.all
+    end 
+
+    def show
+        @kid = Kid.find_by_id(params[:id])
     end 
 
     private

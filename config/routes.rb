@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   resources :behavior_logs
-  resources :users
-  resources :kids
+  resources :kids do 
+    resources :behavior_logs
+  end
+  resources :users, only: [:create, :new, :show] 
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -29,3 +29,11 @@ Generators to Use:
 User sign-up: 
 - has_secure_password (authenticate, validate password &/or password confirmation)
 - bcrypt gem add to Gemfile
+
+nested routes: 
+'/users/
+'/users/:id/behavior_logs'
+'/users/:id/kids
+'/kids'
+'/kids/:id/behavior_logs
+'/kids/:id/users

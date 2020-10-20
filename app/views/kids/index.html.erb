@@ -1,4 +1,12 @@
 <h1>Kid(s) You're Responsible For :) </h1>
-<% @kids.all do |kid| %>
-    <%= kid.name %>
+
+<ol>
+<% @kids.each do |kid| %>
+    <li>
+    <%= link_to kid.name, kid_path(kid) %> - 
+    <%= link_to "See behavior logs", kid_behavior_logs_path(kid) %>
+    <%= link_to "Add a behavior log", new_kid_behavior_log_path(kid)%>
+    </li>
     <%end %>
+
+</ol>

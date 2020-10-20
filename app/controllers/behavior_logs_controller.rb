@@ -3,6 +3,15 @@ class BehaviorLogsController < ApplicationController
     end 
 
     def show
+        if params(:kid_id)
+            @kid = Kid.find_by(id: params[:kid_id])
+            @behavior_log = @kid.behavior_logs.find_by(id: params[:id])
+            if @behavior_log.nil?
+                redirect_to kid_behavior_logs_path(@kid)
+            end 
+        else 
+            @behavior_log = BehaviorLog.find(params[:id])
+        end 
     end 
 
     def new
@@ -11,12 +20,13 @@ class BehaviorLogsController < ApplicationController
 
     def create
         #  byebug
-        @behavior_log = @kid.behavior_logs.build(behavior_log_params)
+        @behavior_log = current_user.behavior_logs.build(behavior_log_params)
         # byebug
         if @behavior_log.save
             
-            redirect_to behavior_log_path
+            redirect_to behavior_log_path(@behavior_log)
         else
+            # byebug
             render :new  
         end 
     end 
@@ -24,7 +34,7 @@ class BehaviorLogsController < ApplicationController
     private
 
         def behavior_log_params
-            params.require(:behavior_log).permit(:date, :time, :location, :before_behavior, :behavior_content, :outcome, :user_id)
+            params.require(:behavior_log).permit(:date, :time, :location, :before_behavior, :behavior_content, :outcome, :kid_id, :user_id)
         end 
 
 

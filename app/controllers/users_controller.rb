@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    
     def new
         @user = User.new
     end 
@@ -9,9 +10,9 @@ class UsersController < ApplicationController
             #log user in
             session[:user_id] = @user.id
             #redirect to the show page (@user)
-            redirect_to @user
+            redirect_to user_path(@user)
         else
-            render :new 
+            render 'users/new' 
         end 
     end 
 
