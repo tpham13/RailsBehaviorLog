@@ -28,15 +28,16 @@ class BehaviorLogsController < ApplicationController
     end 
 
     def show
-        if params(:kid_id)
-            @kid = Kid.find_by(id: params[:kid_id])
-            @behavior_log = @kid.behavior_logs.find_by(id: params[:id])
-            if @behavior_log.nil?
-                redirect_to kid_behavior_logs_path(@kid)
-            end 
-        else 
-            @behavior_log = BehaviorLog.find(params[:id])
-        end 
+        @behavior_log = BehaviorLog.find_by(params[:id])
+        # if params(:kid_id)
+        #     @kid = Kid.find_by(id: params[:kid_id])
+        #     @behavior_log = @kid.behavior_logs.find_by(id: params[:id])
+        #     if @behavior_log.nil?
+        #         redirect_to kid_behavior_logs_path(@kid)
+        #     end 
+        # else 
+        #     @behavior_log = BehaviorLog.find(params[:id])
+        # end 
     end 
 
     private

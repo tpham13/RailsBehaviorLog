@@ -10,7 +10,7 @@
   <% end %> <br><br>-->
 Has these recorded logs:<br><br>
     <% @kid.behavior_logs.each do |log|%><br>
-    Incident date:    <%= link_to log.date, behavior_logs_path(@behavior_logs) %><br/>
+    Incident date:    <%= link_to log.date, behavior_log_path(log) %><br/>
    
     <% end %>
  </p> 
