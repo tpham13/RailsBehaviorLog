@@ -1,3 +1,4 @@
+
 <h1>behavior show page</h1>
     Date:    <%= @behavior_log.date%><br/>
     Time:    <%= @behavior_log.time%><br/>
@@ -5,4 +6,6 @@
     Before behavior happen: <%= @behavior_log.before_behavior%><br/>
     Behavior description:   <%= @behavior_log.behavior_content%><br/>
     Behavior outcome:       <%= @behavior_log.outcome%><br/>
-  
+    Recorded by:  <%= link_to @behavior_log.user.username, user_path(@behavior_log.user)%><br/>
+ <p><%= button_to "Edit Behavior Log", edit_user_behavior_log_path(@behavior_log.user, @behavior_log) if @behavior_log.user %></p>
+ <p><%= button_to "Delete Behavior Log", user_behavior_log_path(@behavior_log.user, @behavior_log), method: "delete" %>

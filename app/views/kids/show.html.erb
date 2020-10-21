@@ -3,14 +3,16 @@
   Birthday: <%= @kid.birthday %>
 </p>
 <p>
-<!--Belong to these caregivers:<br><br>
-  <% @kid.users.each do |user| %>
-    <%= link_to user.username, user_path(user) %> <br>
+<ul>
+Has these aregivers:<br>
+  <% @kid.users.uniq.each do |user| %>
+    <li><%= link_to user.username, user_path(user) %> <br></li>
      
-  <% end %> <br><br>-->
+  <% end %> <br><br>
+
 Has these recorded logs:<br><br>
-    <% @kid.behavior_logs.each do |log|%><br>
-    Incident date:    <%= link_to log.date, behavior_log_path(log) %><br/>
+    <% @kid.behavior_logs.each do |log|%>
+    <li>Incident date:    <%= link_to log.date, behavior_log_path(log)%> - Recorded by: <%= link_to log.user.username, user_path(log)%> </li>
    
     <% end %>
  </p> 

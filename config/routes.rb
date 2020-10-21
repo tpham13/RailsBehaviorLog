@@ -12,9 +12,9 @@ Rails.application.routes.draw do
 
   resources :behavior_logs
   resources :kids do 
-    resources :behavior_logs
+    resources :behavior_logs, shallow: true
   end
-  resources :users, only: [:create, :new, :show] do 
+  resources :users do 
     resources :behavior_logs
   end
   
