@@ -12,7 +12,7 @@ Has these aregivers:<br>
 
 Has these recorded logs:<br><br>
     <% @kid.behavior_logs.each do |log|%>
-    <li>Incident date:    <%= link_to log.date, behavior_log_path(log)%> - Recorded by: <%= link_to log.user.username, user_path(log)%> </li>
+    <li>Incident date:    <%= link_to log.date, behavior_log_path(log)%> - Recorded by: <%= link_to log.user.username, user_path(log.user)%> </li>
    
     <% end %>
  </p> 

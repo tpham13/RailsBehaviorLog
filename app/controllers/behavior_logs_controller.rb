@@ -1,4 +1,5 @@
 class BehaviorLogsController < ApplicationController
+    before_action :redirect_if_not_logged_in, only: [:create, :new, :edit, :update]
     before_action :set_kid_if_nested
     
 
@@ -13,7 +14,7 @@ class BehaviorLogsController < ApplicationController
     def create
         @behavior_log = current_user.behavior_logs.build(behavior_log_params)
         if @behavior_log.save
-            redirect_to behavior_log_path(@behavior_log)
+            redirect_to behavior_logs_path
         else
             render 'behavior_logs/new'  
         end 
@@ -21,17 +22,17 @@ class BehaviorLogsController < ApplicationController
 
     def edit
         @behavior_log = BehaviorLog.find_by_id(params[:id])
-        redirect_to behavior_log_path if @behavior_log.user != current_user
+        redirect_to '/' if @behavior_log.user != current_user
     end 
 
     def update
         @behavior_log = BehaviorLog.find_by_id(params[:id])
-        redirect_to behavior_logs_path if @behavior_log.user != current_user
+        redirect_to '/' if @behavior_log.user != current_user
         
         if @behavior_log.update(behavior_log_params)
             redirect_to behavior_log_path(@behavior_log)
         else
-            render 'behavior_log/edit'
+            render 'behavior_logs/edit'
         end 
     end 
 
@@ -44,10 +45,11 @@ class BehaviorLogsController < ApplicationController
     end 
 
     def show
-        @behavior_log = BehaviorLog.find_by(params[:id])
-        # if params(:kid_id)
-        #     @kid = Kid.find_by(id: params[:kid_id])
-        #     @behavior_log = @kid.behavior_logs.find_by(id: params[:id])
+        # byebug
+        # @behavior_log = BehaviorLog.find_by(params[:id])
+        # if @kid
+            @behavior_log = BehaviorLog.find_by_id(params[:id])
+            # @behavior_log = @kid.behavior_logs.find_by(id: params[:id])
         #     if @behavior_log.nil?
         #         redirect_to kid_behavior_logs_path(@kid)
         #     end 
@@ -58,11 +60,13 @@ class BehaviorLogsController < ApplicationController
 
     def destroy
         #byebug
+        if @kid 
         @behavior_log = BehaviorLog.find_by_id(params[:id])
-        
         @behavior_log.delete
         
-        redirect_to user_path(@behavior_log)
+        
+        redirect_to behavior_logs_path(@behavior_logs)
+        end 
     end 
     private
 

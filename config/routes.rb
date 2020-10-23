@@ -9,13 +9,14 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   #logout route
   delete '/logout' => 'sessions#destroy'
+  
 
   resources :behavior_logs
   resources :kids do 
-    resources :behavior_logs, shallow: true
+    resources :behavior_logs, only: [:show, :index, :new, :edit]
   end
   resources :users do 
-    resources :behavior_logs
+    resources :behavior_logs, only: [:show, :index, :new, :edit]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
