@@ -1,6 +1,6 @@
 
  <h1>New Behavior Log</h1>
-<%= form_for ([@behavior_log.kid, @behavior_log]) do |f| %>
+<%= form_for @behavior_log do |f| %>
 Behavior log recorded for: <%= f.collection_select :kid_id, current_user.kids.uniq, :id, :name %><br/><br/>
   
   <%= f.hidden_field :user_id%> 

@@ -10,14 +10,15 @@ Rails.application.routes.draw do
   #logout route
   delete '/logout' => 'sessions#destroy'
   
-
+  get '/behavior_logs/:id/edit' => 'behavior_logs#edit'
+  post '/behavior_logs/:id/edit' => 'behavior_logs#update'
   resources :behavior_logs
   resources :kids do 
-    resources :behavior_logs, only: [:show, :index, :new, :edit]
+    resources :behavior_logs, shallow: true
   end
   resources :users do 
-    resources :behavior_logs, only: [:show, :index, :new, :edit]
-  end
+    resources :behavior_logs, shallow: true
+  end 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

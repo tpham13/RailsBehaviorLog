@@ -1,7 +1,6 @@
 class BehaviorLogsController < ApplicationController
     before_action :redirect_if_not_logged_in, only: [:create, :new, :edit, :update]
-    before_action :set_kid_if_nested
-    
+    before_action :set_kid_if_nested, only: [:new, :index]
 
     def new
         if @kid && !Kid.exists?(params[:kid_id])
@@ -21,14 +20,14 @@ class BehaviorLogsController < ApplicationController
     end 
 
     def edit
-        @behavior_log = BehaviorLog.find_by_id(params[:id])
-        redirect_to '/' if @behavior_log.user != current_user
+        @behavior_log = BehaviorLog.find_by(id: params[:id])
+        redirect_to '/' if !@behavior_log || @behavior_log.user != current_user
     end 
 
     def update
-        @behavior_log = BehaviorLog.find_by_id(params[:id])
-        redirect_to '/' if @behavior_log.user != current_user
         
+        @behavior_log = BehaviorLog.find_by(id: params[:id])
+        redirect_to behavior_logs_path if !@behavior_log || @behavior_log.user != current_user 
         if @behavior_log.update(behavior_log_params)
             redirect_to behavior_log_path(@behavior_log)
         else
@@ -45,10 +44,9 @@ class BehaviorLogsController < ApplicationController
     end 
 
     def show
-        # byebug
-        # @behavior_log = BehaviorLog.find_by(params[:id])
+        # @behavior_log = BehaviorLog.find_by(id: params[:id])
         # if @kid
-            @behavior_log = BehaviorLog.find_by_id(params[:id])
+            @behavior_log = BehaviorLog.find_by(id: params[:id])
             # @behavior_log = @kid.behavior_logs.find_by(id: params[:id])
         #     if @behavior_log.nil?
         #         redirect_to kid_behavior_logs_path(@kid)
@@ -59,19 +57,16 @@ class BehaviorLogsController < ApplicationController
     end 
 
     def destroy
-        #byebug
-        if @kid 
-        @behavior_log = BehaviorLog.find_by_id(params[:id])
-        @behavior_log.delete
         
-        
-        redirect_to behavior_logs_path(@behavior_logs)
-        end 
+        BehaviorLog.find_by(id: params[:id]).delete
+        # byebug
+        redirect_to '/'
     end 
     private
 
         def behavior_log_params
-            params.require(:behavior_log).permit(:date, :time, :location, :before_behavior, :behavior_content, :outcome, :kid_id)
+            params.require(:behavior_log).permit(:date, :time, :location, :before_behavior, :behavior_content, :outcome, :kid_id, :user_id)
+            
         end 
 
         def set_kid_if_nested
