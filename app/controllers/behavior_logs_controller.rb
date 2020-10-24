@@ -65,7 +65,7 @@ class BehaviorLogsController < ApplicationController
     private
 
         def behavior_log_params
-            params.require(:behavior_log).permit(:date, :time, :location, :before_behavior, :behavior_content, :outcome, :kid_id, :user_id)
+            params.require(:behavior_log).permit(:date, :time, :location, :before_behavior, :behavior_content, :outcome, :kid_id, :user_id, kid_attributes: [:name])
             
         end 
 

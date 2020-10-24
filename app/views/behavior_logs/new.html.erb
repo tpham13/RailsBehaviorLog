@@ -32,12 +32,12 @@
     <%= f.text_field :outcome%>
     <br>
     <br> 
-Behavior log recorded for: <%= f.collection_select :kid_id, current_user.kids.uniq, :id, :name %><br/><br/>    
-<%= f.fields_for :kid, @behavior_log.kid do |kids_fields|%>
-    <%= kids_fields.label :name%>
-    <%= kids_fields.text_field :name %>
-    <%= kids_fields.label :birthday%>
-    <%= kids_fields.date_field :birthday %>
+Behavior log recorded for: <%= f.collection_select :kid_id, Kid.all.uniq, :id, :name %><br/><br/>    
+<%= f.fields_for :kid, Kid.new do |kid_fields|%>
+    <%= kid_fields.label :name%>
+    <%= kid_fields.text_field :name %>
+    <%= kid_fields.label :birthday%>
+    <%= kid_fields.date_field :birthday %>
 <% end %>
   <%= f.submit "Add Behavior Log"%>
 <% end %>
