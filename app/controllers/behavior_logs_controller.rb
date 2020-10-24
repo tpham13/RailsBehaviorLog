@@ -60,7 +60,7 @@ class BehaviorLogsController < ApplicationController
         
         BehaviorLog.find_by(id: params[:id]).delete
         # byebug
-        redirect_to '/'
+        redirect_to behavior_logs_path
     end 
     private
 

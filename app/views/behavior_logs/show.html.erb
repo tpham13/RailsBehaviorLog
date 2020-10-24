@@ -8,4 +8,4 @@
     Behavior outcome:       <%= @behavior_log.outcome%><br/>
     Recorded by:  <%= link_to @behavior_log.user.username, user_path(@behavior_log.user)%><br/>
  <p><%= button_to  "Edit Behavior Log", edit_behavior_log_path(@behavior_log),{method: "get"}%></p>
- <p><%= link_to "Delete Behavior Log", behavior_log_path(@behavior_log), method: "delete" %></p>
+ <p><%= button_to "Delete Behavior Log", behavior_log_path(@behavior_log), method: "delete" %></p>
