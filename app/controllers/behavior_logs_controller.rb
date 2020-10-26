@@ -20,13 +20,12 @@ class BehaviorLogsController < ApplicationController
     end 
 
     def edit
-        @behavior_log = BehaviorLog.find_by(id: params[:id])
+        @behavior_log = find_by_id
         redirect_to '/' if !@behavior_log || @behavior_log.user != current_user
     end 
 
     def update
-        
-        @behavior_log = BehaviorLog.find_by(id: params[:id])
+        @behavior_log = find_by_id
         redirect_to behavior_logs_path if !@behavior_log || @behavior_log.user != current_user 
         if  @behavior_log.update(behavior_log_params)
             redirect_to behavior_log_path(@behavior_log)
@@ -44,22 +43,11 @@ class BehaviorLogsController < ApplicationController
     end 
 
     def show
-        # @behavior_log = BehaviorLog.find_by(id: params[:id])
-        # if @kid
-            @behavior_log = BehaviorLog.find_by(id: params[:id])
-            # @behavior_log = @kid.behavior_logs.find_by(id: params[:id])
-        #     if @behavior_log.nil?
-        #         redirect_to kid_behavior_logs_path(@kid)
-        #     end 
-        # else 
-        #     @behavior_log = BehaviorLog.find(params[:id])
-        # end 
+            @behavior_log = find_by_id
     end 
 
     def destroy
-        
-        BehaviorLog.find_by(id: params[:id]).delete
-        # byebug
+        find_by_id.delete
         redirect_to behavior_logs_path
     end 
     private
@@ -71,6 +59,10 @@ class BehaviorLogsController < ApplicationController
 
         def set_kid_if_nested
             @kid = Kid.find_by_id(params[:kid_id]) if params[:kid_id]
+        end 
+
+        def find_by_id
+            BehaviorLog.find_by(id: params[:id])
         end 
 
 end
