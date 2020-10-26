@@ -1,4 +1,4 @@
-<h1>Sign Up</h1>
+<h1>Sign Up Here</h1>
 <% if @user.errors.any? %>
     <div id="error_explanation">
         <h2>
@@ -7,20 +7,21 @@
         </h2>
 
         <ul>
-            <% @user.erros.full_messages.each do |msg| %>
+            <% @user.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
             <% end %>
 <%end %>
-
+<p>
 <%= form_for(@user, url:'/signup') do |f| %>
     <%= f.label :username %>
-    <%= f.text_field :username, required:true%>
+    <%= f.text_field :username %>
     <br>
     <%= f.label :email %>
-    <%= f.email_field :email, required:true %>
+    <%= f.email_field :email %>
     <br>
     <%= f.label :password %>
-    <%= f.password_field :password, required:true %> <!--we use password instead of password_digest here b/c if we send in password_digest= it will end up storing the rosster in it and we bypass 'bcrypt'. Only in the database that we reference this as password_digest -->
+    <%= f.password_field :password %> <!--we use password instead of password_digest here b/c if we send in password_digest= it will end up storing the rosster in it and we bypass 'bcrypt'. Only in the database that we reference this as password_digest -->
     <br>
     <%= f.submit "Submit"%>
 <% end %>
+</p>

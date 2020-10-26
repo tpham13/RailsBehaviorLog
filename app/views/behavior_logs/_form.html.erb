@@ -1,3 +1,18 @@
+<% if @behavior_log.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@behavior_log.errors.count, "error") %>
+      prohibited you from saving:
+    </h2>
+
+    <ul>
+    <% @behavior_log.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @behavior_log do |f| %>
   Behavior log recorded for: <%= f.collection_select :kid_id, Kid.all.uniq, :id, :name %><br/><br/>    
   <%= f.hidden_field :user_id%> 
