@@ -28,7 +28,7 @@ class BehaviorLogsController < ApplicationController
         
         @behavior_log = BehaviorLog.find_by(id: params[:id])
         redirect_to behavior_logs_path if !@behavior_log || @behavior_log.user != current_user 
-        if @behavior_log.update(behavior_log_params)
+        if  @behavior_log.update(behavior_log_params)
             redirect_to behavior_log_path(@behavior_log)
         else
             render 'behavior_logs/edit'

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   #login route
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+  #omniauth callback route
+  get '/auth/facebook/callback' => 'sessions#create'
   #logout route
   delete '/logout' => 'sessions#destroy'
   
