@@ -16,7 +16,7 @@ class KidsController < ApplicationController
     end 
 
     def index
-        @kids = current_user.kids.all
+        @kids = current_user.kids.alpha
     end 
 
     def show

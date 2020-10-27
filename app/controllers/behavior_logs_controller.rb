@@ -35,11 +35,17 @@ class BehaviorLogsController < ApplicationController
     end 
 
     def index
-        if @kid
-            @behavior_logs = @kid.behavior_logs
+        if params[:user_id] && @user = User.find_by(id: params[:user_id])
+            @behavior_logs = @user.behavior_logs
         else
-            @behavior_logs = BehaviorLog.all 
+            @error = "That user doesn't exist" if params[:user_id]
+            @behavior_logs = BehaviorLog.all
         end 
+        # if @kid
+        #     @behavior_logs = @kid.behavior_logs.date
+        # else
+        #     @behavior_logs = BehaviorLog.date
+        # end 
     end 
 
     def show
