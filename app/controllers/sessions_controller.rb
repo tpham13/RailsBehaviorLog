@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
         redirect_to root_path 
     end 
 
-    def create
+    def create 
         if auth
             @user = User.find_or_create_by(email: auth["info"]["email"]) do |u| #if user is exist then find the user by email by the returned hash 
                 #then we're going to set the user attributes: username and password
@@ -21,7 +21,8 @@ class SessionsController < ApplicationController
             redirect_to '/'
         end 
         else
-            #NORMAL LOGIN PROCESS W/ Bcrypt
+            
+        #     #NORMAL LOGIN PROCESS W/ Bcrypt
             user = User.find_by(username: params[:user][:username])
             if user && user.authenticate(params[:user][:password])
                 # set the session so when they login, their data is save in a session while they're login
@@ -31,10 +32,10 @@ class SessionsController < ApplicationController
                 flash[:message] = "Incorrect login info, please try again"
                 render :new
             end
-        end
+        end 
+        
+    end 
 
-    end
-    
    private
 
    def auth #this method response with a hash that we get from facebook

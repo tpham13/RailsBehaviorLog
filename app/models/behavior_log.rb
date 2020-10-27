@@ -6,7 +6,7 @@ class BehaviorLog < ApplicationRecord
   validates  :date, :time, :location, :before_behavior, :behavior_content, 
             :outcome, presence: true
   
-  scope :alpha, -> { order(:name)}
+  # scope :alpha, -> { order(:name)}
 
   # def user_attributes=(user_attributes)
   #   self.user = User.find_or_create_by(username: user_attributes[:username]) unless user_attributes[:username].blank?
