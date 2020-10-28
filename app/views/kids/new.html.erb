@@ -1,21 +1,8 @@
 <h1>Create a New Kid</h1>
 
-<% if @kid.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@kid.errors.count, "error") %>
-      prohibited you from saving:
-    </h2>
-
-    <ul>
-    <% @kid.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
+<%= render partial: "layouts/error", locals: {object: @kid} %>
 <%= form_for (@kid) do |f|%>
+
     <%= f.label :name %>
     <%= f.text_field :name %>
 

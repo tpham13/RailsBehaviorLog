@@ -1,7 +1,7 @@
 <h2><%= @user.username %> </h2> has these following kids:<br/>
 <ol> 
 <li>
-<% @user.kids.alpha.uniq.each do |kid| %> 
+<% @user.kids.uniq.each do |kid| %> 
   <%= link_to kid.name, kid_path(kid)%> has 
   <%= kid.behavior_logs.size %> recorded behavior logs.
   <li>

@@ -1,0 +1,12 @@
+<div>
+<%= link_to "All kid non-alpha", kids_path(@kids), {method: 'get'} %>
+</div>
+<ol>
+<% @kids.each do |kid| %>
+
+<li>
+<%= kid.name %>
+</li>
+
+<% end %>
+</ol>

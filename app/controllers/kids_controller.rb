@@ -19,10 +19,14 @@ class KidsController < ApplicationController
         @kids = current_user.kids
     end 
 
+    def alpha
+        @kids = Kid.alpha
+    end
+
     def show
         @kid = Kid.find_by_id(params[:id])
     end 
-
+ 
     private
 
         def kid_params

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#facebook'
   #logout route
   delete '/logout' => 'sessions#destroy'
+  get '/kids/alpha' => 'kids#alpha', as: 'alpha'
   
   resources :behavior_logs
   resources :kids do 
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   resources :users do 
     resources :behavior_logs #, shallow: true
   end 
+  
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
