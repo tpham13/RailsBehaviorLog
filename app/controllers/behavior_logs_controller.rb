@@ -39,7 +39,8 @@ class BehaviorLogsController < ApplicationController
             @behavior_logs = @user.behavior_logs
         else
             @error = "That user doesn't exist" if params[:user_id]
-            @behavior_logs = BehaviorLog.all
+            # byebug
+            @behavior_logs = BehaviorLog.all 
         end 
         # if @kid
         #     @behavior_logs = @kid.behavior_logs.date

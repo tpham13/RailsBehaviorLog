@@ -1,11 +1,11 @@
 <h1>Kid(s) You're Responsible For :) </h1>
 
 <ol>
-<% current_user.kids.alpha.uniq.each do |kid| %>
+<% current_user.kids.birthday_order.uniq.each do |kid| %>
     <li>
     <%= link_to kid.name, kid_path(kid) %> 
     </li>
 <%end %>
 
 </ol>
-<%= link_to "All kids alpha", alpha_path(@kids) %>
+

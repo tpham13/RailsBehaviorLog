@@ -13,7 +13,7 @@
     <div>
       <%if logged_in? %>
       <%= link_to "Add Kid", new_kid_path %> |
-      <%= link_to "See All Kid", kids_path %> |
+      <%= link_to "See All Kid", kids_path(@kids) %> |
       <%= link_to "Add a Behavior Log", new_behavior_log_path %> |
       <%= link_to "See all behavior logs", behavior_logs_path %> |
       

@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#facebook'
   #logout route
   delete '/logout' => 'sessions#destroy'
-  get '/kids/alpha' => 'kids#alpha', as: 'alpha'
-  
+ 
+
   resources :behavior_logs
   resources :kids do 
     resources :behavior_logs #, shallow: true
