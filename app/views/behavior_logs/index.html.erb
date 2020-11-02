@@ -8,5 +8,7 @@
     Behavior description:   <%= log.behavior_content%><br/>
     Behavior outcome:       <%= log.outcome%><br/>
     Recorded by:  <%= link_to log.user.username, user_path(log.user)%><br/>
+    <p><%= button_to  "Edit Behavior Log", edit_behavior_log_path(log),{method: "get"}%></p>
+    <p><%= button_to "Delete Behavior Log", behavior_log_path(log), method: "delete" %></p>
     -----------------------------------------------------------<br/>
 <% end %>

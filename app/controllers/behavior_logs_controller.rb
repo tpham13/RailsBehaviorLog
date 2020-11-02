@@ -39,24 +39,19 @@ class BehaviorLogsController < ApplicationController
             @behavior_logs = @user.behavior_logs
         else
             @error = "That user doesn't exist" if params[:user_id]
-            # byebug
             @behavior_logs = BehaviorLog.all 
-        end 
-        # if @kid
-        #     @behavior_logs = @kid.behavior_logs.date
-        # else
-        #     @behavior_logs = BehaviorLog.date
-        # end 
+        end  
     end 
 
     def show
-            @behavior_log = find_by_id
+        @behavior_log = find_by_id
     end 
 
     def destroy
         find_by_id.delete
         redirect_to behavior_logs_path
     end 
+    
     private
 
         def behavior_log_params
