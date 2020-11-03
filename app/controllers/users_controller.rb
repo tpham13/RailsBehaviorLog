@@ -21,7 +21,6 @@ class UsersController < ApplicationController
         @user = User.find_by_id(params[:id])
         if @user.id != current_user.id
             redirect_to user_path(current_user)
-        # redirect_to '/' if !current_user
         end 
     end 
 
