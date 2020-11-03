@@ -15,10 +15,10 @@ Rails.application.routes.draw do
 
   resources :behavior_logs
   resources :kids do 
-    resources :behavior_logs #, shallow: true
+    resources :behavior_logs 
   end
   resources :users do 
-    resources :behavior_logs #, shallow: true
+    resources :behavior_logs 
   end 
   
   

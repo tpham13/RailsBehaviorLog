@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Behavior Log will allow caregivers(users) to record and track their kid/kids' behaviors. Tracking their kids' behavior will help them see a pattern for the causes of these behaviors and seek for a solution. 
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+* Installation: 
 
-* Configuration
+Clone this repository and execute: 
+$bundle install
 
-* Database creation
+Then execute: 
+$rails db:migrate 
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
