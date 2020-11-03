@@ -1,10 +1,13 @@
 <h2><%= @user.username %> </h2> has these following kids:<br/>
 <ol> 
-<li>
-<% @user.kids.uniq.each do |kid| %> 
-  <%= link_to kid.name, kid_path(kid)%> has 
-  <%= kid.behavior_logs.size %> recorded behavior logs.
-  <li>
-<% end %>
 
+<% @user.kids.uniq.each do |kid| %> 
+<li>
+  <%= link_to kid.name, kid_path(kid)%> was borned on
+  <%= kid.birthday%> and has 
+  <%= kid.behavior_logs.size %> recorded behavior logs.
+
+<% end %>
+</li>
 </ol>
+

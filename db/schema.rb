@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_164539) do
+ActiveRecord::Schema.define(version: 2020_11_02_234010) do
 
   create_table "behavior_logs", force: :cascade do |t|
-    t.date "date"
     t.datetime "time"
     t.string "location"
     t.string "before_behavior"

@@ -17,13 +17,8 @@
   Behavior log recorded for: <%= f.collection_select :kid_id, Kid.all.uniq, :id, :name %><br/><br/>    
   <%= f.hidden_field :user_id%> 
 
-
-
-    <%= f.label :date %>
-    <%= f.date_field :date %>
-
     <%= f.label :time %>
-    <%= f.time_field :time%>
+    <%= f.datetime_field :time%>
     <br>
     <br> 
 

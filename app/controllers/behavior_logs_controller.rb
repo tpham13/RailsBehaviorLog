@@ -1,13 +1,13 @@
 class BehaviorLogsController < ApplicationController
-    before_action :redirect_if_not_logged_in, only: [:create, :new, :edit, :update]
-    before_action :set_kid_if_nested, only: [:new, :index]
+    before_action :redirect_if_not_logged_in
+    # before_action :set_kid_if_nested, only: [:new, :index]
 
     def new
-        if @kid && !Kid.exists?(params[:kid_id])
-            @behavior_log = @kid.behavior_logs.build
-        else  
+        # if @kid && !Kid.exists?(params[:kid_id])
+        #     @behavior_log = @kid.behavior_logs.build
+        # else  
             @behavior_log = current_user.behavior_logs.build 
-        end 
+        # end 
     end 
 
     def create
@@ -55,13 +55,13 @@ class BehaviorLogsController < ApplicationController
     private
 
         def behavior_log_params
-            params.require(:behavior_log).permit(:date, :time, :location, :before_behavior, :behavior_content, :outcome, :kid_id, :user_id, kid_attributes: [:name])
+            params.require(:behavior_log).permit(:time, :location, :before_behavior, :behavior_content, :outcome, :kid_id, :user_id)
             
         end 
 
-        def set_kid_if_nested
-            @kid = Kid.find_by_id(params[:kid_id]) if params[:kid_id]
-        end 
+        # def set_kid_if_nested
+        #     @kid = Kid.find_by_id(params[:kid_id]) if params[:kid_id]
+        # end 
 
         def find_by_id
             BehaviorLog.find_by(id: params[:id])

@@ -6,13 +6,13 @@
 <ul>
 Has these aregivers:<br>
   <% @kid.users.uniq.each do |user| %>
-    <li><%= link_to user.username, user_path(user) %> <br></li>
+    <li><%= user.username %> <br></li>
      
   <% end %> <br><br>
 
 Has these recorded logs:<br><br>
     <% @kid.behavior_logs.each do |log|%>
-    <li>Incident date:    <%= link_to log.date, behavior_log_path(log)%> - Recorded by: <%= link_to log.user.username, user_path(log.user)%> </li>
+    <li>Incident date:    <%= link_to log.time, behavior_log_path(log)%> - Recorded by: <%= log.user.username %> </li>
    
     <% end %>
  </p> 

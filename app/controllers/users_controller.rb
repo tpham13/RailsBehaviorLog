@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :redirect_if_not_logged_in, only: [:show]
-    
+
     def new
         @user = User.new
     end 
@@ -19,7 +19,10 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by_id(params[:id])
-        redirect_to '/' if !@user
+        if @user.id != current_user.id
+            redirect_to user_path(current_user)
+        # redirect_to '/' if !current_user
+        end 
     end 
 
     private 
