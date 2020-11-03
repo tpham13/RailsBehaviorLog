@@ -10,7 +10,8 @@
   </head>
 
   <body>
-    <div>
+
+<div>
       <%if logged_in? %>
       <%= link_to "User home page", user_path(current_user) %> |
       <%= link_to "See all behavior logs", behavior_logs_path %> |
@@ -25,5 +26,6 @@
       <%= link_to('Log in with Facebook', '/auth/facebook') %>
       <% end %>
       <%= yield %>
+      <%= image_tag "evil-toddler-legos-meme.jpg" %> 
   </body>
 </html>
