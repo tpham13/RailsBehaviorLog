@@ -48,8 +48,15 @@ class BehaviorLogsController < ApplicationController
     end 
 
     def destroy
-        find_by_id.delete
-        redirect_to behavior_logs_path
+        @behavior_log = find_by_id
+        if !@behavior_log || @behavior_log.user != current_user 
+            redirect_to '/'
+        else 
+        @behavior_log.delete
+            redirect_to user_path(current_user)
+        
+        end 
+      
     end 
     
     private
