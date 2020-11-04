@@ -11,8 +11,7 @@ class KidsController < ApplicationController
             redirect_to kids_path(@kids)
         else
             render 'kids/new'
-        end 
-        
+        end        
     end 
 
     def index

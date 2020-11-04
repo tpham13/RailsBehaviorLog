@@ -1,4 +1,10 @@
-
+<h3>Which kid's behavior logs would you like to see?</h3>
+<%= form_tag behavior_logs_path, :method => "get" do %>
+    <%= label_tag(:search, "Search by kid name:") %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag("Search", :name => nil) %>
+<% end %>
+<!--
 <% current_user.behavior_logs.each do |log| %>
 <h2>Behavior Log for <%= log.kid.name %></h2>
     
@@ -11,4 +17,16 @@
     <p><%= button_to  "Edit Behavior Log", edit_behavior_log_path(log),{method: "get"}%></p>
     <p><%= button_to "Delete Behavior Log", behavior_log_path(log), method: "delete" %></p>
     -----------------------------------------------------------<br/>
-<% end %>
+<% end %>-->
+<% @behavior_logs.each do |log|%>
+Name: <%= log.kid.name %>
+Date Time:    <%= log.time%><br/>
+    Location:<%= log.location%><br/>
+    Before behavior happen: <%= log.before_behavior%><br/>
+    Behavior description:   <%= log.behavior_content%><br/>
+    Behavior outcome:       <%= log.outcome%><br/>
+    Recorded by:  <%= log.user.username%><br/>
+    <p><%= button_to  "Edit Behavior Log", edit_behavior_log_path(log),{method: "get"}%></p>
+    <p><%= button_to "Delete Behavior Log", behavior_log_path(log), method: "delete" %></p>
+
+<%end %>
